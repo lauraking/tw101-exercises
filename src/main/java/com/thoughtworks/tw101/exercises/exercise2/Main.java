@@ -7,7 +7,9 @@ public class Main {
     public static void main(String[] args) {
 
         Accumulator accumulator = new Accumulator();
-
-
+        for (int loopCount = 1; loopCount <= 5; loopCount++) {
+            accumulator.increment();
+        }
+        accumulator.total();
     }
 }

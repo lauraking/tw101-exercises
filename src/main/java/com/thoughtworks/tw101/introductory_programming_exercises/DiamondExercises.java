@@ -13,6 +13,13 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
+        // 1 3 5 7
+        int length = 2*n - 1;
+        for (int row = 1; row <= n; row ++) {
+            for (int i = 0; i < n; i++) {
+                //todo how to fill in
+            }
+        }
 
     }
 
