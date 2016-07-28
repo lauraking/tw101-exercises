@@ -18,10 +18,16 @@ public class Main {
         root.add("Sara");
         root.add("Casey");
 
+        String michelle = "michelle";
+        String bill = "bill";
+        System.out.println("compare michelle and bill: "+ michelle.compareTo(bill));
+        System.out.println("compare bill and michelle: "+ bill.compareTo(michelle));
         List<String> names = root.names();
 
+        /*
         for (String name : names) {
             System.out.println(name);
         }
+        */
     }
 }

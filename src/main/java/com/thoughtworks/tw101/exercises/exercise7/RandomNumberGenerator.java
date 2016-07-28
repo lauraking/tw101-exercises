@@ -1,13 +1,21 @@
 package com.thoughtworks.tw101.exercises.exercise7;
 
+import java.util.Random;
+
 /**
  * Created by laurakingsley on 7/25/16.
  */
 public class RandomNumberGenerator {
-    public int number;
+    private int number;
 
     public RandomNumberGenerator() {
-       // todo number = Math.;
+        number = getNewRandomNumber();
+    }
+
+    public int getNewRandomNumber() {
+        Random rand = new Random();
+        int randomInt = rand.nextInt((100 - 1) + 1) + 1;
+        return randomInt;
     }
 
     public int guessNumber(int guess) {
