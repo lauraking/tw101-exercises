@@ -8,6 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         RandomNumberGenerator randomNumGen = new RandomNumberGenerator();
+        Game game = new Game(randomNumGen);
+        game.run();
 
     }
 }

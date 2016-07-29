@@ -17,21 +17,30 @@ public class Game {
     }
 
     public void run() {
-
+        boolean correctGuess = false;
+        while(!correctGuess) {
+            while (!getValidResponse()) {
+            }
+            correctGuess = evaluateGuess();
+        }
     }
 
     public void promptUser() {
-        System.out.println("Guess and integer between 1 and 100 inclusive");
+
 
     }
 
     public boolean getValidResponse() {
+        System.out.println("Guess and integer between 1 and 100 inclusive");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = null;
         int i;
         try {
             s = br.readLine();
+            System.out.println("guess: "+s);
         } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("INVALID GUESS: not valid integer");
             return false;
         }
 
@@ -39,9 +48,18 @@ public class Game {
             i = Integer.parseInt(s);
         }
             catch (NumberFormatException E) {
+                E.printStackTrace();
+                //System.out.println("guess: "+i);
+                System.out.println("INVALID GUESS: not valid integer");
                 return false;
         }
         currentGuess = i;
+        if (currentGuess > 100 || currentGuess < 1) {
+            System.out.println("INVALID GUESS: out of bounds");
+            return false;
+        }
+
+
         return true;
 
     }
@@ -49,12 +67,15 @@ public class Game {
     public boolean evaluateGuess () {
         int evaluateInt = numberGenerator.guessNumber(currentGuess);
         if (evaluateInt == 0) {
+            System.out.println("Correct! The number was: "+currentGuess);
             return true;
         }
         else if (evaluateInt == 1) {
+            System.out.println("You guessed too high");
             return false;
         }
         else if (evaluateInt == -1) {
+            System.out.println("You guessed too low");
             return false;
         }
 

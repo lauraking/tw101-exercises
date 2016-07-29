@@ -1,5 +1,6 @@
 package com.thoughtworks.tw101.exercises.exercise7;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -7,9 +8,12 @@ import java.util.Random;
  */
 public class RandomNumberGenerator {
     private int number;
+    private ArrayList<Integer> guessList;
 
     public RandomNumberGenerator() {
+
         number = getNewRandomNumber();
+        guessList = new ArrayList<Integer>();
     }
 
     public int getNewRandomNumber() {
@@ -19,6 +23,7 @@ public class RandomNumberGenerator {
     }
 
     public int guessNumber(int guess) {
+
         int compare = 0;
         if (guess > number) {
             compare = 1;
