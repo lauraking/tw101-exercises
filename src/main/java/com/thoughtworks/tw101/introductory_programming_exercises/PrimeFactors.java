@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PrimeFactors {
     public static void main(String[] args) {
-        List<Integer> primeFactors = generate(100);
+        List<Integer> primeFactors = generate(30);
         for (Integer num: primeFactors) System.out.println(num);
     }
 
