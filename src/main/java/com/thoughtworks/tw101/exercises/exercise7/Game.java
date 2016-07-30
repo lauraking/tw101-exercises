@@ -12,23 +12,20 @@ public class Game {
 
     private int currentGuess;
     private RandomNumberGenerator numberGenerator;
-    public Game (RandomNumberGenerator gen) {
+
+    public Game(RandomNumberGenerator gen) {
         numberGenerator = gen;
     }
 
     public void run() {
         boolean correctGuess = false;
-        while(!correctGuess) {
+        while (!correctGuess) {
             while (!getValidResponse()) {
             }
             correctGuess = evaluateGuess();
         }
     }
 
-    public void promptUser() {
-
-
-    }
 
     public boolean getValidResponse() {
         System.out.println("Guess and integer between 1 and 100 inclusive");
@@ -37,7 +34,7 @@ public class Game {
         int i;
         try {
             s = br.readLine();
-            System.out.println("guess: "+s);
+            System.out.println("guess: " + s);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("INVALID GUESS: not valid integer");
@@ -46,12 +43,9 @@ public class Game {
 
         try {
             i = Integer.parseInt(s);
-        }
-            catch (NumberFormatException E) {
-                E.printStackTrace();
-                //System.out.println("guess: "+i);
-                System.out.println("INVALID GUESS: not valid integer");
-                return false;
+        } catch (NumberFormatException E) {
+            System.out.println("INVALID GUESS: not valid integer");
+            return false;
         }
         currentGuess = i;
         if (currentGuess > 100 || currentGuess < 1) {
@@ -64,17 +58,15 @@ public class Game {
 
     }
 
-    public boolean evaluateGuess () {
+    public boolean evaluateGuess() {
         int evaluateInt = numberGenerator.guessNumber(currentGuess);
         if (evaluateInt == 0) {
-            System.out.println("Correct! The number was: "+currentGuess);
+            System.out.println("Correct! The number was: " + currentGuess);
             return true;
-        }
-        else if (evaluateInt == 1) {
+        } else if (evaluateInt == 1) {
             System.out.println("You guessed too high");
             return false;
-        }
-        else if (evaluateInt == -1) {
+        } else if (evaluateInt == -1) {
             System.out.println("You guessed too low");
             return false;
         }
@@ -85,7 +77,6 @@ public class Game {
     public boolean isValidInteger() {
         return true;
     }
-
 
 
 }

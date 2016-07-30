@@ -19,21 +19,17 @@ public class Node {
             if (leftChild == null) {
                 Node newNode = new Node(nameOfNewNode);
                 this.leftChild = newNode;
-            }
-            else {
+            } else {
                 this.leftChild.add(nameOfNewNode);
             }
-        }
-        else if (nameOfNewNode.compareTo(name) > 0) {
+        } else if (nameOfNewNode.compareTo(name) > 0) {
             if (rightChild == null) {
                 Node newNode = new Node(nameOfNewNode);
                 this.rightChild = newNode;
-            }
-            else {
+            } else {
                 this.rightChild.add(nameOfNewNode);
             }
-        }
-        else {
+        } else {
             // equal to string so no addition
         }
     }
@@ -43,19 +39,18 @@ public class Node {
         List leftList;
         List rightList;
 
-        if (leftChild!=null) {
+        if (leftChild != null) {
             leftList = leftChild.names();
             returnList.addAll(leftList);
         }
 
         returnList.add(name);
-        if (rightChild!=null) {
+        if (rightChild != null) {
             rightList = rightChild.names();
             returnList.addAll(rightList);
         }
         return returnList;
     }
-
 
 
 }
