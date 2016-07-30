@@ -15,10 +15,19 @@ public class DiamondExercises {
     private static void drawAnIsoscelesTriangle(int n) {
         // 1 3 5 7
         int length = 2*n - 1;
-        for (int row = 1; row <= n; row ++) {
-            for (int i = 0; i < n; i++) {
-                //todo how to fill in
+        int mid = n-1;
+        for (int row = 0; row < n; row ++) {
+            int rowNum = 2*row - 1;
+            for (int i = 0; i < length; i++) {
+                if ((i > mid + row) || (i < mid - row)) {
+                    System.out.print(" ");
+                }
+                else {
+                    System.out.print("*");
+                }
             }
+            System.out.print("\n");
+
         }
 
     }
@@ -31,6 +40,8 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
+        drawAnIsoscelesTriangle(n);
+        drawLowerDiamond(n);
 
     }
 
@@ -42,7 +53,45 @@ public class DiamondExercises {
 //           Bill
 //            ***
 //             *
+
+    private static void drawLowerDiamond(int n) {
+        int length = 2*n - 1;
+        int mid = n-1;
+
+        for (int row = n - 2; row >= 0; row --) {
+            int rowNum = 2*row - 1;
+            for (int i = 0; i < length; i++) {
+                if ((i > mid + row) || (i < mid - row)) {
+                    System.out.print(" ");
+                }
+                else {
+                    System.out.print("*");
+                }
+            }
+            System.out.print("\n");
+
+        }
+    }
+
     private static void drawADiamondWithYourName(int n) {
+        int length = 2*n - 1;
+        int mid = n-1;
+        for (int row = 0; row < n-1; row ++) {
+            int rowNum = 2*row - 1;
+            for (int i = 0; i < length; i++) {
+                if ((i > mid + row) || (i < mid - row)) {
+                    System.out.print(" ");
+                }
+                else {
+                    System.out.print("*");
+                }
+            }
+            System.out.print("\n");
+
+        }
+        System.out.println("Laura");
+
+        drawLowerDiamond(n);
 
     }
 }
