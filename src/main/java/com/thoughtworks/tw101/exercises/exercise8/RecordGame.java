@@ -45,7 +45,7 @@ public class RecordGame {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("INVALID GUESS: not valid integer");
+            System.out.println("INVALID INPUT");
             return false;
         }
 
@@ -55,7 +55,9 @@ public class RecordGame {
             System.out.println("INVALID GUESS: not valid integer");
             return false;
         }
+
         currentGuess = i;
+
         if (currentGuess > 100 || currentGuess < 1) {
             System.out.println("INVALID GUESS: out of bounds");
             return false;

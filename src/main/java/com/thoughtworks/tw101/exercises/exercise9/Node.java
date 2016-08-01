@@ -14,6 +14,8 @@ public class Node {
         this.leftChild = null;
     }
 
+    // if string does not exist in tree, make new node
+    // add in appropriate location by comparing to the current node's name
     public void add(String nameOfNewNode) {
         if (nameOfNewNode.compareTo(name) < 0) {
             if (leftChild == null) {
@@ -34,6 +36,7 @@ public class Node {
         }
     }
 
+    // this method return a list of the entire tree's nodes in order from leftmost node to rightmost node
     public List<String> names() {
         List returnList = new ArrayList<String>();
         List leftList;

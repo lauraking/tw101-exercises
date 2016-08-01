@@ -15,6 +15,9 @@ public class PrimeFactors {
         for (Integer num: primeFactors) System.out.println(num);
     }
 
+    // this function returns a list of the prime factors of an integer from smallest to largest
+    // begin with 2, then add 2 to the factor list for every time the input is divisible by 2
+    // once the number is not divisible by 2 anymore, increment i and repeat
     private static List<Integer> generate(int n) {
         List factorList = new ArrayList<Integer>();
         int remainder = n;

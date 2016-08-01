@@ -28,7 +28,7 @@ public class Game {
 
 
     public boolean getValidResponse() {
-        System.out.println("Guess and integer between 1 and 100 inclusive");
+        System.out.println("Guess an integer between 1 and 100 inclusive");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s = null;
         int i;

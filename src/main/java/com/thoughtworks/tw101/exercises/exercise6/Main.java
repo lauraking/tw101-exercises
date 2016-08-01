@@ -10,7 +10,6 @@ package com.thoughtworks.tw101.exercises.exercise6;
 
 import java.util.ArrayList;
 
-// todo ??? each monster takes 10 points of damage? so hit trolls with 20?
 public class Main {
     public static void main(String[] args) {
         Orc orc_one = new Orc();

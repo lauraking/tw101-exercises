@@ -6,10 +6,10 @@ package com.thoughtworks.tw101.exercises.exercise2;
 public class Main {
     public static void main(String[] args) {
 
-        Accumulator accumulator = new Accumulator();
-        for (int loopCount = 1; loopCount <= 5; loopCount++) {
+        Accumulator accumulator = new Accumulator(); // create new accumululator object
+        for (int loopCount = 1; loopCount <= 5; loopCount++) { // call increment 5 times on accumulator
             accumulator.increment();
         }
-        accumulator.total();
+        accumulator.total(); // get total value from accumulator
     }
 }
