@@ -39,7 +39,7 @@ public class Node {
     // this method return a list of the entire tree's nodes in order from leftmost node to rightmost node
     public List<String> names() {
         List returnList = new ArrayList<String>();
-        
+
         if (leftChild != null) {
             List leftList;
             leftList = leftChild.names();

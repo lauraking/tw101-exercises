@@ -4,11 +4,19 @@ package com.thoughtworks.tw101.exercises.exercise8;
 // once they guess correctly. Use an ArrayList to store the guesses. Catch the NumberFormatException and handle the case
 // where the user entered a String that is not parseable.
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         RecordRandomNumberGenerator randomNumGen = new RecordRandomNumberGenerator();
-        RecordGame game = new RecordGame(randomNumGen);
-        game.run();
+        RecordGame game = new RecordGame(randomNumGen,System.out);
+        try {
+            game.run();
+        }
+        catch (IOException e) {
+            System.err.println("Exception caught: "+e);
+            System.exit(-1);
+        }
 
     }
 }

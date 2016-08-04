@@ -4,6 +4,7 @@ package com.thoughtworks.tw101.exercises.exercise8;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class RecordGame {
@@ -11,16 +12,18 @@ public class RecordGame {
     private int currentGuess;
     private ArrayList<Integer> guessList;
     private RecordRandomNumberGenerator numberGenerator;
+    private PrintStream printStream;
 
-    public RecordGame(RecordRandomNumberGenerator gen) {
+    public RecordGame(RecordRandomNumberGenerator gen, PrintStream printStream) {
         numberGenerator = gen;
+        this.printStream = printStream;
         guessList = new ArrayList<Integer>();
     }
 
-    public void run() {
+    public void run() throws IOException{
         boolean correctGuess = false;
         while (!correctGuess) {
-            while (!getValidResponse()) {
+            while (!getIntegerResponse()) {
             }
             correctGuess = evaluateGuess();
         }
@@ -28,67 +31,60 @@ public class RecordGame {
 
     }
 
-    public void printGuesses() {
-        System.out.println("Guesses: ");
-        for (int i = 0; i < guessList.size(); i++) {
-            System.out.println(guessList.get(i));
-        }
-    }
-
-    public boolean getValidResponse() {
-        System.out.println("Guess and integer between 1 and 100 inclusive");
+    private boolean getIntegerResponse() throws IOException {
+        print("Guess and integer between 1 and 100 inclusive");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = null;
-        int i;
+        String s = br.readLine();
         try {
-            s = br.readLine();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("INVALID INPUT");
-            return false;
-        }
-
-        try {
-            i = Integer.parseInt(s);
+            currentGuess = Integer.parseInt(s);
         } catch (NumberFormatException E) {
-            System.out.println("INVALID GUESS: not valid integer");
+            print("INVALID GUESS: not valid integer");
             return false;
         }
 
-        currentGuess = i;
-
-        if (currentGuess > 100 || currentGuess < 1) {
-            System.out.println("INVALID GUESS: out of bounds");
-            return false;
-        }
         guessList.add(currentGuess);
 
         return true;
 
     }
 
-    public boolean evaluateGuess() {
+    private boolean guessOutOfBounds(int response) {
+        if (response > 100 || response < 1) {
+            print("INVALID GUESS: out of bounds");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean evaluateGuess() {
+
+        if (guessOutOfBounds(currentGuess)) return false;
 
         int evaluateInt = numberGenerator.guessNumber(currentGuess);
 
         if (evaluateInt == 0) {
-            System.out.println("Correct! The number was: " + currentGuess);
+            print("Correct! The number was: " + currentGuess);
             return true;
         } else if (evaluateInt == 1) {
-            System.out.println("You guessed too high");
+            print("You guessed too high");
             return false;
         } else if (evaluateInt == -1) {
-            System.out.println("You guessed too low");
+            print("You guessed too low");
             return false;
         }
 
         return false;
     }
 
-    public boolean isValidInteger() {
-        return true;
+    private void print(String string) {
+        printStream.println(string);
     }
 
+    private void printGuesses() {
+        print("Guesses: ");
+        for (int i = 0; i < guessList.size(); i++) {
+            print(guessList.get(i).toString());
+        }
+    }
 
 }
