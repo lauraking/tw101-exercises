@@ -39,16 +39,16 @@ public class Node {
     // this method return a list of the entire tree's nodes in order from leftmost node to rightmost node
     public List<String> names() {
         List returnList = new ArrayList<String>();
-        List leftList;
-        List rightList;
-
+        
         if (leftChild != null) {
+            List leftList;
             leftList = leftChild.names();
             returnList.addAll(leftList);
         }
 
         returnList.add(name);
         if (rightChild != null) {
+            List rightList;
             rightList = rightChild.names();
             returnList.addAll(rightList);
         }
